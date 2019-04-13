@@ -1,7 +1,7 @@
 {
-	"name": "mobx-demo",
+	"name": "react-demo",
 	"version": "0.0.1",
-	"description": "a mobx demo",
+	"description": "a react demo",
 	"main": "index.js",
 	"scripts": {
 		"build": "npx webpack && http-server -c-1"
@@ -12,8 +12,8 @@
 	"author": "darren z m lin",
 	"license": "MIT",
 	"dependencies": {
-		"mobx": "^5.1.2",
-		"mobx-react": "^5.2.8"
+		"react": "^16.6.0",
+		"react-dom": "^16.6.0"	
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.1.0",

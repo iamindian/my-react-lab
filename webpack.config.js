@@ -13,7 +13,7 @@ module.exports = {
 			}
 		]
 	},
-	entry: './src/TodoListView.js',
+	entry: './src/View.js',
 	output: {
 		filename: 'index.js',
 		path: path.resolve(__dirname, 'dist')
