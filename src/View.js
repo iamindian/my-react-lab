@@ -58,25 +58,25 @@ class View extends Component {
 
 	// new 
 
-	// getSnapshotBeforeUpdate(pp, ps){
-	// 	console.log('getSnapshotBeforeUpdate');
-	// 	console.log(pp);
-	// 	return {};
-	// }
+	getSnapshotBeforeUpdate(pp, ps){
+		console.log('getSnapshotBeforeUpdate');
+		console.log(pp);
+		return {};
+	}
 
 	componentDidMount(){
-		console.log(this.context);
+		console.log(this.context);//react@16.6.0 fix the issue of accessing context by this.context
 
 	}
-	// componentDidUpdate(pp, ps, snap){
-	// 	console.log('componentDidUpdate');
-	// 	console.log('previous props:' + JSON.stringify(pp));
-	// 	console.log('previous state:' + JSON.stringify(ps));
-	// }
+	componentDidUpdate(pp, ps, snap){
+		console.log('componentDidUpdate');
+		console.log('previous props:' + JSON.stringify(pp));
+		console.log('previous state:' + JSON.stringify(ps));
+	}
 
-	// componentDidCatch(){
-	// 	console.log('componentDidCatch');
-	// }
+	componentDidCatch(){
+		console.log('componentDidCatch');
+	}
 
 	render() {
 		return <div>
