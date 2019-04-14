@@ -14,6 +14,10 @@ class SubView extends Component {
 	componentDidMount() {
 		console.log(this.context);
 	}
+	componentWillUnmount(pp, ps, snap){
+		console.log('props:' + JSON.stringify(pp));
+		console.log('state:' + JSON.stringify(ps));
+	}
 	render() {
 		return <div>child:{this.props.p1}</div>
 	}
@@ -77,6 +81,11 @@ class View extends Component {
 	componentDidCatch(){
 		console.log('componentDidCatch');
 	}
+	
+	componentWillUnmount(pp, ps, snap){
+		console.log('props:' + JSON.stringify(pp));
+		console.log('state:' + JSON.stringify(ps));
+	}
 
 	render() {
 		return <div>
@@ -95,7 +104,7 @@ ReactDOM.render(
 	, document.getElementById('main'));
 // setInterval(()=>{
 // 	a = Math.random();
-// 	ReactDOM.render(<View p1={a}></View>,document.getElementById('main'));
+	ReactDOM.render(<div></div>,document.getElementById('main'));
 // },1000);
 
 
