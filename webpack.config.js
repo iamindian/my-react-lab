@@ -13,9 +13,12 @@ module.exports = {
 			}
 		]
 	},
-	entry: './src/View.js',
+	entry:{
+		react: path.join(__dirname, 'src', 'pure-react.js'),
+		redux: path.join(__dirname, 'src', 'react-redux-saga.js'),
+	},
 	output: {
-		filename: 'index.js',
+		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	}
 };
