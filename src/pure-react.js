@@ -14,9 +14,8 @@ class SubView extends Component {
 	componentDidMount() {
 		console.log(this.context);
 	}
-	componentWillUnmount(pp, ps, snap){
-		console.log('props:' + JSON.stringify(pp));
-		console.log('state:' + JSON.stringify(ps));
+	componentWillUnmount(){
+		
 	}
 	render() {
 		return <div>child:{this.props.p1}</div>
@@ -32,11 +31,6 @@ class View extends Component {
 			test: 'test',
 			child: ''
 		};
-		// setInterval(()=>{
-		// 	this.setState({
-		// 		test:Math.random()
-		// 	})
-		// },1000);
 	}
 	fromSub(p1) {
 		this.setState({
@@ -44,27 +38,35 @@ class View extends Component {
 		});
 		console.log('from sub:' + p1);
 	}
+
+	shouldComponentUpdate(np, ns, nc) {
+		console.log('shouldComponentUpdate');
+		return true;
+	}
+
 	// componentWillReceiveProps(p) {
 	// 	console.log('componentWillReceiveProps');
 	// 	console.log(p);
 	// }
 
-	// shouldComponentUpdate(np, ns, nc) {
-	// 	console.log('shouldComponentUpdate');
-	// 	console.log([np, ns, nc]);
-	// 	return true;
-	// }
+	
 
-	// componentWillUpdate(np, ns, nc) {
-	// 	console.log('componentWillUpdate');
-	// 	console.log([np, ns, nc]);
-	// }
+	componentWillUpdate(np, ns, nc) {
+		console.log('componentWillUpdate');
+		console.log([np, ns, nc]);
+	}
 
-	// new 
+	//new 
+	static getDerivedStateFromProps(np,ps){ //initial state by next props
+		return {};
+	}
 
-	getSnapshotBeforeUpdate(pp, ps){
+	
+
+	getSnapshotBeforeUpdate(pp, ps){ //pre-commited phase
 		console.log('getSnapshotBeforeUpdate');
 		console.log(pp);
+		console.log(ps);
 		return {};
 	}
 
@@ -76,15 +78,16 @@ class View extends Component {
 		console.log('componentDidUpdate');
 		console.log('previous props:' + JSON.stringify(pp));
 		console.log('previous state:' + JSON.stringify(ps));
+		console.log('snap returned from getSnapshotBeforeupdate:' + JSON.stringify(snap));
 	}
 
 	componentDidCatch(){
-		console.log('componentDidCatch');
+		console.log('componentDidCatch called');
 	}
 	
-	componentWillUnmount(pp, ps, snap){
-		console.log('props:' + JSON.stringify(pp));
-		console.log('state:' + JSON.stringify(ps));
+	componentWillUnmount(){
+		console.dir('componentWillUnmount called');
+		
 	}
 
 	render() {
@@ -98,14 +101,11 @@ class View extends Component {
 	}
 }
 View.contextType = EnContext;
-let a = Math.random();
+let a = 'i am from children';
 ReactDOM.render(
 	<View p1={a}></View>
 	, document.getElementById('main'));
-// setInterval(()=>{
-// 	a = Math.random();
-	ReactDOM.render(<div></div>,document.getElementById('main'));
-// },1000);
+
 
 
 

@@ -34,11 +34,19 @@ const mapStateToProps = state => {
         counter: state.counter
     }
 }
-
+const tracking = (e) =>{
+    console.log(e);
+}
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        increment: ()=> ({type:'ADD'}),
-        decrement: ()=>({type:'MIN'})
+        increment: (e)=> {
+            tracking(e);
+            return {type:'ADD'}
+        },
+        decrement: (e)=>{
+            tracking(e);
+            return {type:'MIN'}
+        }
     },dispatch);
 }
 

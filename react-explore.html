@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+</head>
+
+<body>
+    <div id='like_button_container'></div>
+    <script type='text/javascript'>
+        'use strict';
+        const e = React.createElement;
+        class LikeButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { liked: false };
+            }
+
+            render() {
+                return e('div',null,[
+                e('button',
+                    { onClick: () => this.setState({ liked: this.state.liked?false:true }) },
+                    'like'),
+                e('span',null,this.state.liked.toString())]);
+            }
+        }
+        const domContainer = document.querySelector('#like_button_container');
+        ReactDOM.render(e(LikeButton), domContainer);
+    </script>
+</body>
+</html>
